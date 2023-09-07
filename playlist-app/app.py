@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import db, connect_db, Playlist, Song, PlaylistSong
+from models import db, connect_db, Playlist, Song
 from forms import NewSongForPlaylistForm, SongForm, PlaylistForm
 
 app = Flask(__name__)

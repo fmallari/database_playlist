@@ -23,13 +23,14 @@ class Song(db.Model):
     title = db.Column(db.String, nullable=False)
     artist = db.Column(db.String, nullable=False)
 
-class PlaylistSong(db.Model):
-    """Mapping of a playlist to a song."""
+# class PlaylistSong(db.Model):
+#     """Mapping of a playlist to a song."""
 
-    __tablename__ = "playlist_songs"
-
-    playlist_id = db.Column(db.Integer, db.ForeignKey('playlist.id'), primary_key=True)
-    song_id = db.Column(db.Integer, db.ForeignKey('songs.id'), primary_key=True)
+#     __tablename__ = "playlist_songs"
+    
+    
+#     playlist_id = db.Column(db.Integer, db.ForeignKey('playlist.id'), primary_key=True)
+#     song_id = db.Column(db.Integer, db.ForeignKey('songs.id'), primary_key=True)
 
 # DO NOT MODIFY THIS FUNCTION
 def connect_db(app):
