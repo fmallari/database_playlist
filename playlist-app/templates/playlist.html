@@ -9,9 +9,13 @@
   {% endif %}
 </div>
 
-
-<div class="text-danger">
-  SHOW ALL OF THE SONGS IN THIS PLAYLIST HERE
+<h2>Songs in this playlist:</h2>
+<div class="container">
+  <ol>
+    {% for song in playlist.song %}
+    <li><a href="/songs/{{songs.id}}">"{{song.title}}" by {{song.artist}}</a></li>
+    {{% endfor %}}
+  </ol>
 </div>
 
 <p>
