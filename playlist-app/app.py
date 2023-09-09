@@ -64,19 +64,18 @@ def add_playlist():
     if form.validate_on_submit():
         name = form.name.data
         description = form.description.data
-        new_playlist = Playlist(name=name, description=description)
-        db.session.add(new_playlist)
 
-        try:
-            db.session.commit()
-        except IntegrityError as e:
-            if 'name' in e.orig.pgerror:
+        if Playlist.query.filter(Playlist.name == name, Playlist.description == description).first():
                 form.name.errors.append('Playlist name already exists. Please choose another.')
                 return render_template('new_playlist.html', form=form)
-            
-            return redirect('/playlists')
         
-        return render_template('new_playlist.html', form=form)
+        new_playlist = Playlist(name=name, description=description)
+        db.session.add(new_playlist)
+        db.session.commit()
+            
+        return redirect('/playlists')
+        
+    return render_template('new_playlist.html', form=form)
 
 
 ##############################################################################
